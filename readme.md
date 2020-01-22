@@ -1,4 +1,4 @@
-Bitbucket Download
+CloudWalker Download
 ===============
 You can download the source from this [Bitbucket link](/https://bitbucket.org/Devendra_/app-cloudwalker-demo/get/cc62a81a8802.zip)
 
@@ -10,11 +10,24 @@ IDE: Android Studio ver:3.5
 Language: Kotlin. 1.3.5
 
 Build: Gradle.
+
+Start Time: 20/01/2020
 ```
 Architecture: Clean Architecture [Best Explanation](https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started)
 
+Features Included
+----
+1. Get Configuration
+2. Get Popular Movies
+3. Get Top Trending Movies
+4. Get Trailers
+5. Play Trailers
+6. Get Movies Details
+7. Search Movies
 
-
+Features Not Implemented
+----
+1. Unit Test cases
 
 CodeBase Guide
 -----
