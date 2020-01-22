@@ -26,6 +26,7 @@ Technologies Used
 7. Youtube.Jar
 8. Lottie
 9. Androidx
+10.Caching
 
 
 Features Included
@@ -37,6 +38,7 @@ Features Included
 5. Play Trailers
 6. Get Movies Details
 7. Search Movies
+8. Offline from Local Cache. (if once user loaded the data, next time if no internet, data will be fetched from cache.)
 
 Features Not Implemented
 ----
