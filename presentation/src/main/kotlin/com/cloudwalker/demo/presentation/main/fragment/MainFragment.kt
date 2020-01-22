@@ -16,8 +16,6 @@ private val TAG: String = MainFragment::class.java.simpleName
 
 /**
  * BaseFragment Which has to be implemented by all UI Fragment
- *
- * Created by Praveen on 06-08-2018.
  */
 abstract class MainFragment : Fragment() {
 

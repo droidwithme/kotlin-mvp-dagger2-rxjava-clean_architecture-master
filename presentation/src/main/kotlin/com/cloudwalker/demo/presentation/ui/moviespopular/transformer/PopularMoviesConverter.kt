@@ -10,6 +10,9 @@ import javax.inject.Inject
 
 private val TAG = PopularMoviesConverter::class.java.simpleName
 
+/**
+ * This class converts the domain layer's bean class into presentation layer's model class.
+ */
 class PopularMoviesConverter
 @Inject
 constructor(private val gson: Gson, private val utils: Utils) {

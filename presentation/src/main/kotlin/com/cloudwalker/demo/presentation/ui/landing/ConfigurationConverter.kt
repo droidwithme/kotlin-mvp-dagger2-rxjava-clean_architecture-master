@@ -8,6 +8,10 @@ import javax.inject.Inject
 
 private val TAG = ConfigurationConverter::class.java.simpleName
 
+/**
+ * Converter used to convert data layer's bean in to
+ * presentation layer's model classes.
+ */
 class ConfigurationConverter
 @Inject
 constructor(private val gson: Gson, private val utils: Utils) {

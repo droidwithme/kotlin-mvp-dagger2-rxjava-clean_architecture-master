@@ -2,6 +2,10 @@ package com.cloudwalker.demo.presentation.ui.commons
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ *  A common data class used in all fragments
+ *  as all APIs emittes same objects
+ */
  data class Result(
     @SerializedName("adult")
     var adult: Boolean,

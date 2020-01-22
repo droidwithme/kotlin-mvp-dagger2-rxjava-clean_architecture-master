@@ -13,12 +13,21 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.view_footer.view.*
 import kotlinx.android.synthetic.main.view_popular_movies.view.*
 
-
+/**
+ * Adapter used in Popular fragment
+ * to show the listing of popular movies
+ * Added a button as last item to load more movies
+ */
 class AdapterPopularMovies(
     var popularMoviesList: List<Result>,
     var clickListener: OnMovieClickListener,
     var onLoadMore: OnLoadMore
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    /**
+     * This method helps in adding more movies
+     * invoked in popular fragment's renderData()
+     */
     fun addMoreMovies(moreMovies: List<Result>) {
         listOfMovies!!.addAll(moreMovies)
         notifyDataSetChanged()
@@ -71,7 +80,10 @@ class AdapterPopularMovies(
         // Add extra view to show the footer view
     }
 
-    // Now define the viewholder for Normal list item
+    /**
+     * View holder for footer view
+     * Simply holds a button to load more item.
+     */
     inner class FooterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val btnLoadMore = itemView.btnLoadMore
         fun bind(onLoadMore: OnLoadMore) {
@@ -81,6 +93,12 @@ class AdapterPopularMovies(
         }
     }
 
+    /**
+     * This viewholder class holds
+     * the movies data.
+     * Picasso is used for Image Rendring.
+     * Kotlin's synthetic imports are used to access the views from XML
+     */
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val movieBanner = view.itemImage
         private val movieDescription = view.itemDescription

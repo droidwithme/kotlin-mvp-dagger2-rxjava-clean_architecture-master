@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
      */
     @Suppress("unused")
     fun setWhiteBackground() {
-        utils.showLog(TAG, "Setting Tejora Background")
+        utils.showLog(TAG, "Setting white Background")
         window.setBackgroundDrawable(
             ContextCompat.getDrawable(
                 this,

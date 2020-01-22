@@ -9,8 +9,6 @@ import javax.inject.Singleton
 /**
  * This Is A Main Thread (UI) Implementation Based On {@Link rx.Scheduler}
  * Which Will Execute Actions On THe Android UI Thread.
- *
- * Created by Praveen on 06-08-2018.
  */
 @Singleton
 class UIThreadExecutor

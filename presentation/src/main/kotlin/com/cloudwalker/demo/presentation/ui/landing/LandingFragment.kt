@@ -16,6 +16,10 @@ import javax.inject.Inject
 
 private val TAG: String = LandingFragment::class.java.simpleName
 
+/**
+ * This fragment will be replaced after
+ * splash screen and here the configuration API will be called.
+ */
 class LandingFragment : MainFragment(), ConfigurationView, View.OnClickListener {
     // To Initialize Mobile Component For Injection
     private val configurationComponent: ConfigurationComponent?

@@ -4,8 +4,6 @@ import android.content.Context
 
 /**
  * Interface for loading view with common methods to be implemented.
- *
- * Created by Praveen on 06-08-2018.
  */
 interface MainView {
     /**

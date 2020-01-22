@@ -9,8 +9,6 @@ import com.cloudwalker.demo.presentation.ui.splash.fragments.SplashFragment
 
 /**
  * Enum To Get Fragment Names
- *
- * Created by Praveen on 06-08-2018.
  */
 enum class FragmentEnum(val code: String) {
     SPLASHSCREEN(SplashFragment::class.java.simpleName),

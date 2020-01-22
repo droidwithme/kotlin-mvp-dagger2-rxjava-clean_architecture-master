@@ -1,5 +1,6 @@
 package com.cloudwalker.demo.presentation.ui.moviespopular.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.InflateException
@@ -31,37 +32,25 @@ import javax.inject.Inject
 
 private val TAG: String = PopularMoviesFragment::class.java.simpleName
 
+/**
+ * This fragment will show listing of popular movies
+ * Consists simple recyclerview
+ */
 class PopularMoviesFragment : MainFragment(),
     PopularMovieView, OnMovieClickListener, OnLoadMore {
-    override fun loadMore() {
-        pageNumber++
-        initialize(PopularMoviesModelQ(Variables.apiKey, "HI", pageNumber.toString()))
-    }
 
-    override fun onMovieSelected(movie: Result) {
 
-        val bundle = Bundle()
-        bundle.putString("data", gson.toJson(movie))
-        mainActivity.replaceFragment(
-            FragmentEnum.MOVIEDETAILS,
-            null,
-            null,
-            bundle
-        )
-    }
+    private lateinit var layoutManager: LinearLayoutManager // to provide layout manger to recyclerview
+    private lateinit var adapterPopular: AdapterPopularMovies // Adapter declaration
+    private var pageNumber = 1 // Page number holds reference of the current page
 
-    private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var adapterPopular: AdapterPopularMovies
-    var pageNumber = 1
-
-    // To Initialize Mobile Component For Injection
+    // To Initialize popular Component For Injection
     private val popularMoviesComponent: PopularMoviesComponent?
         get() = (EnumInjector.INSTANCE.getPopularMovieComponent(
             applicationComponent,
             popularMoviesModule
         ))
 
-    // Mobile module to be initialize after user interaction
     private lateinit var popularMoviesModule: PopularMoviesModule
 
     // To be injected by Dagger when injecting component.
@@ -69,37 +58,38 @@ class PopularMoviesFragment : MainFragment(),
     lateinit var popularMoviesPresenter: PopularMoviesPresenter
 
     // View to render UI
-    private var movieView: View? = null
+    private var popularMoviesView: View? = null
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        if (movieView != null) {
-            val parent = movieView!!.parent as ViewGroup
-            parent.removeView(movieView)
-            utils.showLog(TAG, "movieView != Null $movieView")
+        if (popularMoviesView != null) {
+            val parent = popularMoviesView!!.parent as ViewGroup
+            parent.removeView(popularMoviesView)
+            utils.showLog(TAG, "popularMoviesView != Null $popularMoviesView")
         }
         try {
-            movieView = inflater.inflate(R.layout.fragment_popular_movies, container, false)
-            utils.showLog(TAG, "movieView == Null $movieView")
+            popularMoviesView = inflater.inflate(R.layout.fragment_popular_movies, container, false)
+            utils.showLog(TAG, "popularMoviesView == Null $popularMoviesView")
         } catch (exception: InflateException) {
             utils.showLog(TAG, "Exception $exception")
         }
         mainActivity.appbarLayout.visibility = View.VISIBLE
         mainActivity.appbarLayout.toolBarTitle.text = "Popular Movies"
-        return movieView
+        return popularMoviesView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         utils.showLog(TAG, "onViewCreated()")
         setUpRecyclerView()
-        initialize(PopularMoviesModelQ(Variables.apiKey, "HI", pageNumber.toString()))
+        initialize(PopularMoviesModelQ(Variables.apiKey, "en-US", pageNumber.toString()))
     }
 
-    private fun setUpRecyclerView() {
+    private fun setUpRecyclerView() { // applying the layout managers and item decoration
         layoutManager = LinearLayoutManager(context)
         val dividerItemDecoration =
             DividerItemDecoration(recyclerView.context, layoutManager.orientation)
@@ -114,7 +104,7 @@ class PopularMoviesFragment : MainFragment(),
 
     override fun onPause() {
         super.onPause()
-        utils.showLog(TAG, "onPause()")
+        utils.showLog(TAG, "onPause()") //presenter needs to be destroy in onPause()
         if (::popularMoviesPresenter.isInitialized)
             popularMoviesPresenter.destroy()
     }
@@ -122,7 +112,7 @@ class PopularMoviesFragment : MainFragment(),
     override fun onDestroyView() {
         super.onDestroyView()
         utils.showLog(TAG, "onDestroyView")
-        movieView = null
+        popularMoviesView = null
     }
 
     private fun initialize(popularMoviesModelQ: PopularMoviesModelQ) {
@@ -151,9 +141,11 @@ class PopularMoviesFragment : MainFragment(),
         this.popularMoviesPresenter.getView()
     }
 
+    /**
+     * This method invokes when presenter gets the response
+     */
     override fun renderData(popularMoviesModelR: PopularMoviesModelR) {
         utils.showLog(TAG, "renderData($popularMoviesModelR)") // Logging
-
         if (pageNumber == 1) {
             adapterPopular = AdapterPopularMovies(popularMoviesModelR.results, this, this)
             recyclerView.adapter = adapterPopular
@@ -184,4 +176,20 @@ class PopularMoviesFragment : MainFragment(),
         return mainActivity.applicationContext
     }
 
+
+    override fun loadMore() {
+        pageNumber++
+        initialize(PopularMoviesModelQ(Variables.apiKey, "HI", pageNumber.toString()))
+    }
+
+    override fun onMovieSelected(movie: Result) {
+        val bundle = Bundle()
+        bundle.putString("data", gson.toJson(movie))
+        mainActivity.replaceFragment(
+            FragmentEnum.MOVIEDETAILS,
+            null,
+            null,
+            bundle
+        )
+    }
 }

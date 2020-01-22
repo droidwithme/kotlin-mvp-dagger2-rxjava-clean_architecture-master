@@ -7,6 +7,10 @@ import com.cloudwalker.demo.presentation.ui.moviespopular.dagger.module.PopularM
 import com.cloudwalker.demo.presentation.ui.moviespopular.fragments.PopularMoviesFragment
 import dagger.Component
 
+/**
+ * The component provies the devependencies declared in related module
+ * e.g. PopularMoviesModule and Application Component
+ */
 @PerActivity
 @Component(dependencies = [ApplicationComponent::class], modules = [PopularMoviesModule::class])
 interface PopularMoviesComponent : MainComponent {

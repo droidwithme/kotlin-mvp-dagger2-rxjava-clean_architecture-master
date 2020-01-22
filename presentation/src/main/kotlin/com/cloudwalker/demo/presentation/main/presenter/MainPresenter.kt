@@ -2,8 +2,7 @@ package com.cloudwalker.demo.presentation.main.presenter
 
 /**
  * Interface representing a Presenter in a model view presenter (MVP) pattern.
- *
- * Created by Praveen on 06-08-2018.
+
  */
 interface MainPresenter {
     /**

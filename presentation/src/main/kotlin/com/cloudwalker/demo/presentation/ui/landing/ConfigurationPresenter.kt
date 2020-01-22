@@ -12,6 +12,12 @@ import com.cloudwalker.utils.Utils
 import javax.inject.Inject
 import javax.inject.Named
 
+
+/**
+ * Implementation of the configuration presenter
+ * this holds reference of configuration interactor
+ * Basically this is observing to the interactor
+ */
 class ConfigurationPresenter
 @Inject
 constructor(
@@ -43,6 +49,11 @@ constructor(
         getConfiguration()
     }
 
+    /**
+     * This method executes the interactor in the Domain layer
+     *  that later goes to data layer
+     *   where domainfatcher is implemented.
+     */
     private fun getConfiguration() {
         configurationInteractor.execute(this)
     }

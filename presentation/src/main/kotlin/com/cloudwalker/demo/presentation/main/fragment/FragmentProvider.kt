@@ -16,8 +16,6 @@ private val TAG = FragmentProvider::class.java.simpleName
 
 /**
  * Fragment Provider To Get Fragments
- *
- * Created by Praveen on 06-08-2018.
  */
 object FragmentProvider {
     /**

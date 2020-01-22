@@ -7,6 +7,10 @@ import com.cloudwalker.demo.presentation.main.activity.MainActivity
 import com.cloudwalker.demo.presentation.main.fragment.FragmentEnum
 import com.cloudwalker.utils.Utils
 
+/**
+ * This class handles all back press action
+ * user press hardware back press the event will be handle here
+ */
 object BackPressReactor {
     private val TAG = BackPressReactor::class.java.simpleName
 
@@ -16,6 +20,10 @@ object BackPressReactor {
     @Suppress("unused")
     private var isBackNavigationAllowed = true
 
+
+    /**
+     * This method quites application if user is on home screen of the application
+     */
     private fun exitApplication(fragmentActivity: FragmentActivity, utils: Utils) {
         utils.showLog(TAG, "exitApplication($fragmentActivity,$utils")
         val alertDialog: AlertDialog
@@ -49,7 +57,9 @@ object BackPressReactor {
         }
     }
 
-    /* Function to perform fragment changes on back press*/
+    /**
+     * This method replaces fragment according to logic implemented
+     * */
     fun backPressed(fragmentActivity: FragmentActivity, resID: Int, utils: Utils) {
         val fragment = fragmentActivity.supportFragmentManager.findFragmentById(resID)!!
         utils.showLog(TAG, "Found fragment : ${fragment::class.java.simpleName}")

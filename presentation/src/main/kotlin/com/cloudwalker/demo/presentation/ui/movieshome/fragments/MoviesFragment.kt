@@ -17,6 +17,12 @@ import kotlinx.android.synthetic.main.fragment_movies.*
 
 private val TAG: String = MoviesFragment::class.java.simpleName
 
+/**
+ * After configuration API consumed
+ * this fragment will host 3 other fragments
+ *  for Popular movies, Now playing movies and search movies
+ *  Uses a bottom bar for navigation
+ */
 class MoviesFragment : MainFragment() {
 
 

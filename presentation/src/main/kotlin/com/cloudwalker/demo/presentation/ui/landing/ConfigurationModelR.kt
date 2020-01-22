@@ -2,6 +2,10 @@ package com.cloudwalker.demo.presentation.ui.landing
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ *  The response from getConfiguration API
+ *  getConfiugation API emites this data class
+ */
 data class ConfigurationModelR(
     @SerializedName("change_keys")
     var changeKeys: List<String>,

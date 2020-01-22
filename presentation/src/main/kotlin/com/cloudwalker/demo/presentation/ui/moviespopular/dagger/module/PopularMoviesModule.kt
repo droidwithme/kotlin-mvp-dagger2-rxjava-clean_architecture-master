@@ -18,6 +18,10 @@ import javax.inject.Named
 
 private val TAG = PopularMoviesModule::class.java.simpleName
 
+/**
+ * All the dependencies fullfilled by dagger from the application component
+ * now this will provide the interactor
+ */
 @Module
 class PopularMoviesModule
 constructor(

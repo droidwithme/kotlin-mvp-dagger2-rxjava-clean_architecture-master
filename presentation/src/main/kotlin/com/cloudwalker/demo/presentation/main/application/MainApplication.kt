@@ -10,10 +10,15 @@ import javax.inject.Inject
 
 private val TAG = MainApplication::class.java.simpleName
 
+/**
+ * Main Application class
+ * All injected objects will be provided through out the application
+ */
 class MainApplication : MultiDexApplication() {
 
     // To provide application component for injecting dependencies
     val applicationComponent: ApplicationComponent get() = EnumInjector.INSTANCE.getApplicationComponent(this)
+
 
     @Inject
     lateinit var utils: Utils
@@ -28,7 +33,11 @@ class MainApplication : MultiDexApplication() {
         utils.showLog(TAG, "onCreate()")
     }
 
-    /* Called whenever the configuration changes */
+    /**
+     * configuration change not handled
+     * if user rotates screen while using the app
+     * it will lead a crash.
+     */
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         utils.showLog(TAG, "onConfigurationChanged() method called.")

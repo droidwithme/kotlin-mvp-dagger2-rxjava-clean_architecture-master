@@ -15,6 +15,10 @@ import com.cloudwalker.utils.Utils
 import javax.inject.Inject
 import javax.inject.Named
 
+/**
+ * This is the implementation  of presenter
+ *  this is observing the PopularMoviesModelR as response
+ */
 class PopularMoviesPresenter
 @Inject
 constructor(
