@@ -26,7 +26,7 @@ Technologies Used
 7. Youtube.Jar
 8. Lottie
 9. Androidx
-10.Caching
+10. Caching
 
 
 Features Included
