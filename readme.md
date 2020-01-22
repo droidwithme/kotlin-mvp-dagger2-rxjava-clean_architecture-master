@@ -25,6 +25,7 @@ Technologies Used
 6. Gson
 7. Youtube.Jar
 8. Lottie
+9. Androidx
 
 
 Features Included
