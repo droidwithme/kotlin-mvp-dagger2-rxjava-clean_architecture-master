@@ -1,0 +1,57 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    // Build Specifications
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += ["src/main/kotlin"]
+        }
+    }
+}
+
+dependencies {
+    // Reference To BuildSystem Package
+    def utilsDependencies = rootProject.ext.utilsDependencies
+    def utilsTestDependencies = rootProject.ext.utilsTestDependencies
+
+    // Basic Dependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // All Maven & Google Repository Dependencies
+    implementation utilsDependencies.appCompat
+    implementation utilsDependencies.coreKTX
+    implementation utilsDependencies.javaX
+    implementation utilsDependencies.kotlin
+    implementation utilsDependencies.legacySupport
+
+    // Android UI Testing Libraries
+    testImplementation utilsTestDependencies.junit
+
+    // Android UI Testing Libraries
+    androidTestImplementation utilsTestDependencies.androidXJunit
+    androidTestImplementation utilsTestDependencies.espresso
+    androidTestImplementation utilsTestDependencies.runner
+}

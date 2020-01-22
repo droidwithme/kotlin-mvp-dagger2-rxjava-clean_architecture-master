@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="@dimen/_4sdp"
+    app:contentPadding="@dimen/_4sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="@dimen/_90sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/itemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:maxLines="3"
+            tools:text="Title:" />
+
+            <TextView
+                android:id="@+id/itemVoteCount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                tools:text="Votes: " />
+            <TextView
+                android:id="@+id/itemPopularity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                tools:text="Popularity: " />
+            <TextView
+                android:id="@+id/itemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|start"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:layout_weight="1"
+                tools:text="Description: " />
+
+            <TextView
+                android:id="@+id/itemSeeMore"
+                android:layout_width="match_parent"
+                android:text="See Details"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

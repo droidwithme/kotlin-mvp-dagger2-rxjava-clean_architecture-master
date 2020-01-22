@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">CloudWalker</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+
+    //Exception messages
+    <string name="common_exception_something_went_wrong">
+        Aaaah! Something went wrong....
+        \nBrace yourself till we get the error fixed.
+        \nYou may also retry by swiping down page.
+    </string>
+    <string name="exception_message_unknown_host_exception">
+        Unable to retrieve data from server.
+        \nCheck your internet connection
+    </string>
+
+
+    //Shared Element Transitions Name
+    <string name="collection_logo_transition">LogoTransition</string>
+
+    //Splash Screen
+    <string name="logo_description">This is logo of application</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

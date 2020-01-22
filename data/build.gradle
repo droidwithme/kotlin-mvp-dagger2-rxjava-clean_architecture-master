@@ -1,0 +1,113 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    // Build Specifications
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    // Application Specifications
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+
+        debug {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += ["src/main/kotlin"]
+        }
+
+        sandbox {
+            java.srcDirs += ["src/sandbox/kotlin"]
+        }
+
+        uat {
+            java.srcDirs += ["src/uat/kotlin"]
+        }
+
+        prod {
+            java.srcDirs += ["src/prod/kotlin"]
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "version"
+    productFlavors {
+        sandbox {
+            dimension "version"
+        }
+        uat {
+            dimension "version"
+        }
+        prod {
+            dimension "version"
+        }
+    }
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        // Ignore Release Build for Dev & Stag Build
+        if (variant.buildType.name == 'release' && (names.contains("sandbox") || names.contains("uat"))) {
+            setIgnore(true)
+        }
+        // Ignore Debug Build for Production
+        else if (variant.buildType.name == 'debug' && names.contains("prod")) {
+            setIgnore(true)
+        }
+    }
+}
+
+dependencies {
+    // Reference To BuildSystem Package
+    def dataDependencies = rootProject.ext.dataDependencies
+    def dataTestDependencies = rootProject.ext.dataTestDependencies
+    // Basic Dependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(path: ':domain')
+    implementation project(path: ':utils')
+    // All Maven & Google Repository Dependencies
+    implementation dataDependencies.gson
+    implementation dataDependencies.javaX
+    implementation dataDependencies.kotlin
+    implementation dataDependencies.okHttp3LoggingInterceptor
+    implementation dataDependencies.retrofit2
+    implementation dataDependencies.retrofit2Converter
+    implementation dataDependencies.retrofit2RxJavaAdapter
+    implementation dataDependencies.rxAndroid
+    implementation dataDependencies.rxJava
+
+    // Android UI Testing Libraries
+    testImplementation dataTestDependencies.junit
+
+    // Android UI Testing Libraries
+    androidTestImplementation dataTestDependencies.androidXJunit
+    androidTestImplementation dataTestDependencies.espresso
+    androidTestImplementation dataTestDependencies.runner
+}

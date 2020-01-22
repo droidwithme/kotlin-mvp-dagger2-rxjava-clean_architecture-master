@@ -1,0 +1,195 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    // Build Specifications
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    // To Auto Increment VersionName & VersionCode of Application
+    def versionPropsFile = file('version.properties')
+    // Setting default value
+    def versionC = 0000
+    def versionN = '0.0.0.0'
+    if (versionPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        versionProps
+        def VERSION_MAJOR = versionProps['VERSION_MAJOR'].toInteger()
+        def VERSION_MINOR = versionProps['VERSION_MINOR'].toInteger()
+        def VERSION_PATCH = versionProps['VERSION_PATCH'].toInteger()
+        def VERSION_BUILD = versionProps['VERSION_BUILD'].toInteger() + 1
+        versionProps['VERSION_BUILD'] = VERSION_BUILD.toString()
+        versionProps.store(versionPropsFile.newWriter(), " suppress inspection \"UnusedProperty\" for whole file")
+        versionC = VERSION_MAJOR * 10000 + VERSION_MINOR * 1000 + VERSION_PATCH * 100 + VERSION_BUILD
+        versionN = "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}.${VERSION_BUILD}"
+    } else {
+        throw new FileNotFoundException("Unable to read versioning file")
+    }
+
+    // Signing Credential File
+    def keystorePropertiesFile = file('keystore.properties')
+    // Properties object to access Keystore file
+    def keystoreProperties = new Properties()
+    if (keystorePropertiesFile.canRead()) {
+        keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+    } else {
+        throw new FileNotFoundException("Unable to keystore file for signing")
+    }
+
+    // Signing Config
+    signingConfigs {
+        release {
+            storeFile file(keystoreProperties['storeFile'].toString())
+            storePassword keystoreProperties['storePassword'].toString()
+            keyAlias keystoreProperties['keyAlias'].toString()
+            keyPassword keystoreProperties['keyPassword'].toString()
+        }
+    }
+
+    // Application Specifications
+    defaultConfig {
+        applicationId 'com.cloudwalker.demo.presentation'
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+        versionCode versionC
+        versionName versionN
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+
+        debug {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions "version"
+    productFlavors {
+        sandbox {
+            dimension "version"
+            applicationIdSuffix ".sandbox"
+            versionNameSuffix "_sandbox"
+        }
+        uat {
+            dimension "version"
+            applicationIdSuffix ".uat"
+            versionNameSuffix "_uat"
+        }
+        prod {
+            dimension "version"
+            signingConfig signingConfigs.release
+        }
+    }
+
+    sourceSets {
+        main {
+            java.srcDirs += ["src/main/kotlin"]
+        }
+
+        sandbox {
+            java.srcDirs += ["src/sandbox/kotlin"]
+        }
+
+        uat {
+            java.srcDirs += ["src/uat/kotlin"]
+        }
+
+        prod {
+            java.srcDirs += ["src/prod/kotlin"]
+        }
+    }
+
+    // Ignore Irrelevant Build Variants
+    variantFilter { variant ->
+        def names = variant.flavors*.name
+        // Ignore Release Build for Dev & UAT Build
+        if (variant.buildType.name == 'release' && (names.contains("sandbox") || names.contains("uat"))) {
+            setIgnore(true)
+        }
+        // Ignore Debug Build for Production
+        else if (variant.buildType.name == 'debug' && names.contains("prod")) {
+            setIgnore(true)
+        }
+    }
+
+    // Rename Generated APK With Relevant Name
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def project = "cloudwalker"
+            def separator = "_"
+            def version = variant.versionName
+            def newApkName = "${project}${separator}${version}.apk"
+            outputFileName = new File(newApkName)
+        }
+    }
+
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    lintOptions {
+        checkAllWarnings true
+        warningsAsErrors true
+        abortOnError true
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    // Reference To BuildSystem Package
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    def presentationTestDependencies = rootProject.ext.presentationTestDependencies
+    // Basic Dependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':domain')
+    implementation project(':data')
+    implementation project(':utils')
+    // All Maven & Google Repository Dependencies
+    implementation presentationDependencies.appCompat
+    implementation presentationDependencies.constraintLayout
+    implementation presentationDependencies.coreKTX
+    implementation presentationDependencies.crashlytics
+    implementation presentationDependencies.dagger
+    implementation presentationDependencies.gson
+    implementation presentationDependencies.intuitSDP
+    implementation presentationDependencies.intuitSSP
+    implementation presentationDependencies.kotlin
+    implementation presentationDependencies.legacySupport
+    implementation presentationDependencies.lottie
+    implementation presentationDependencies.material
+    implementation presentationDependencies.multiDex
+    implementation presentationDependencies.rxAndroid
+    implementation presentationDependencies.rxJava
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    kapt presentationDependencies.daggerCompiler
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    // Android UI Testing Libraries
+    testImplementation presentationTestDependencies.junit
+    // Android UI Testing Libraries
+    androidTestImplementation presentationTestDependencies.androidXJunit
+    androidTestImplementation presentationTestDependencies.espresso
+    androidTestImplementation presentationTestDependencies.runner
+    implementation files('src/libs/YouTubeAndroidPlayerApi.jar')
+}

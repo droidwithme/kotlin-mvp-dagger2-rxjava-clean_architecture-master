@@ -1,0 +1,138 @@
+ext {
+
+    /**
+     *  Dependencies Versions
+     */
+    appCompatVersion = '1.0.2'
+    constraintLayoutVersion = '1.1.3'
+    coreKTXVersion = '1.0.1'
+    crashlyticsVersion = '2.9.9'
+    daggerCompilerVersion = '2.21'
+    daggerVersion = '2.21'
+    firebaseCoreVersion = '16.0.8'
+    firebaseIIDVersion = '17.1.1'
+    firebaseJobDispatcherVersion = '0.8.6'
+    firebaseMessagingVersion = '17.5.0'
+    firebasePerformanceVersion = '16.2.4'
+    gsonVersion = '2.8.5'
+    intuitSDPVersion = '1.0.5'
+    intuitSSPVersion = '1.0.6'
+    javaXVersion = '1'
+    kotlinVersion = '1.3.21'
+    leakcanaryDebugVersion = '1.6.3'
+    leakcanaryDebugFragmentVersion = '1.6.3'
+    leakcanaryReleaseVersion = '1.6.3'
+    legacySupportVersion = '1.0.0'
+    lottieVersion = '3.0.0'
+    materialVersion = '1.0.0'
+    multiDexVersion = '1.0.3'
+    okHttp3LoggingInterceptorVersion = '3.14.0'
+    retrofit2Version = '2.5.0'
+    rxAndroidVersion = '2.1.1'
+    rxJavaVersion = '2.2.7'
+
+    /**
+     *  Test Dependencies Versions
+     */
+    androidXJunitVersion = '1.1.0'
+    espressoVersion = '3.1.1'
+    jUnitVersion = '4.12'
+    mockitoVersion = '2.25.1'
+    runnerVersion = '1.1.1'
+
+    /**
+     * Presentation Dependencies
+     */
+    presentationDependencies = [
+            appCompat              : "androidx.appcompat:appcompat:${appCompatVersion}",
+            constraintLayout       : "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
+            coreKTX                : "androidx.core:core-ktx:${coreKTXVersion}",
+            crashlytics            : "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}",
+            dagger                 : "com.google.dagger:dagger:${daggerVersion}",
+            daggerCompiler         : "com.google.dagger:dagger-compiler:${daggerCompilerVersion}",
+            gson                   : "com.google.code.gson:gson:${gsonVersion}",
+            intuitSDP              : "com.intuit.sdp:sdp-android:${intuitSDPVersion}",
+            intuitSSP              : "com.intuit.ssp:ssp-android:${intuitSSPVersion}",
+            kotlin                 : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            legacySupport          : "androidx.legacy:legacy-support-v4:${legacySupportVersion}",
+            lottie                 : "com.airbnb.android:lottie:${lottieVersion}",
+            material               : "com.google.android.material:material:${materialVersion}",
+            multiDex               : "com.android.support:multidex:${multiDexVersion}",
+            rxAndroid              : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava                 : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+    ]
+
+    /**
+     * Presentation Test Dependencies
+     */
+    presentationTestDependencies = [
+            androidXJunit: "androidx.test.ext:junit:${androidXJunitVersion}",
+            espresso     : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            junit        : "junit:junit:${jUnitVersion}",
+            runner       : "androidx.test:runner:${runnerVersion}",
+    ]
+
+    /**
+     * Domain Dependencies
+     */
+    domainDependencies = [
+            gson  : "com.google.code.gson:gson:${gsonVersion}",
+            javaX : "javax.inject:javax.inject:${javaXVersion}",
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            rxJava: "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+    ]
+
+    /**
+     * Domain Test Dependencies
+     */
+    domainTestDependencies = [
+            junit  : "junit:junit:${jUnitVersion}",
+            mockito: "org.mockito:mockito-core:${mockitoVersion}",
+    ]
+
+    /**
+     * Data Dependencies
+     */
+    dataDependencies = [
+            gson                     : "com.google.code.gson:gson:${gsonVersion}",
+            javaX                    : "javax.inject:javax.inject:${javaXVersion}",
+            kotlin                   : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${kotlinVersion}",
+            okHttp3LoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${okHttp3LoggingInterceptorVersion}",
+            retrofit2                : "com.squareup.retrofit2:retrofit:${retrofit2Version}",
+            retrofit2Converter       : "com.squareup.retrofit2:converter-gson:${retrofit2Version}",
+            retrofit2RxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:${retrofit2Version}",
+            rxAndroid                : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava                   : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
+    ]
+
+    /**
+     * Data Test Dependencies
+     */
+    dataTestDependencies = [
+            androidXJunit: "androidx.test.ext:junit:${androidXJunitVersion}",
+            espresso     : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            junit        : "junit:junit:${jUnitVersion}",
+            runner       : "androidx.test:runner:${runnerVersion}",
+    ]
+
+    /**
+     * Utils Dependencies
+     */
+    utilsDependencies = [
+            appCompat    : "androidx.appcompat:appcompat:${appCompatVersion}",
+            coreKTX      : "androidx.core:core-ktx:${coreKTXVersion}",
+            javaX        : "javax.inject:javax.inject:${javaXVersion}",
+            kotlin       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
+            legacySupport: "androidx.legacy:legacy-support-v4:${legacySupportVersion}",
+    ]
+
+    /**
+     * Utils Test Dependencies
+     */
+    utilsTestDependencies = [
+            androidXJunit: "androidx.test.ext:junit:${androidXJunitVersion}",
+            espresso     : "androidx.test.espresso:espresso-core:${espressoVersion}",
+            junit        : "junit:junit:${jUnitVersion}",
+            runner       : "androidx.test:runner:${runnerVersion}",
+    ]
+}
