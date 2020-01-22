@@ -27,6 +27,7 @@ Technologies Used
 8. Lottie
 9. Androidx
 10. Caching
+11. Pagination
 
 
 Features Included
