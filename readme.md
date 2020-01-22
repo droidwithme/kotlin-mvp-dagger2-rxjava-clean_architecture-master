@@ -15,6 +15,18 @@ Start Time: 20/01/2020
 ```
 Architecture: Clean Architecture [Best Explanation](https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started)
 
+Technologies Used
+----
+1. Kotlin
+2. Dagger
+3. RxJava/Android
+4. Constraint Layout
+5. Retrofit
+6. Gson
+7. Youtube.Jar
+8. Lottie
+
+
 Features Included
 ----
 1. Get Configuration
@@ -28,6 +40,13 @@ Features Included
 Features Not Implemented
 ----
 1. Unit Test cases
+
+
+Extra add on
+----
+1. Multi variants
+2. Auto APK naming
+3. Build system
 
 CodeBase Guide
 -----
