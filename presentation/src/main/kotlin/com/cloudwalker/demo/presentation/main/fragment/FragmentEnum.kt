@@ -1,6 +1,5 @@
 package com.cloudwalker.demo.presentation.main.fragment
 
-import com.cloudwalker.demo.presentation.ui.dashboard.fragments.DashboardFragment
 import com.cloudwalker.demo.presentation.ui.landing.LandingFragment
 import com.cloudwalker.demo.presentation.ui.moviedetails.fragments.MoviesDetailsFragment
 import com.cloudwalker.demo.presentation.ui.movieshome.fragments.MoviesFragment
