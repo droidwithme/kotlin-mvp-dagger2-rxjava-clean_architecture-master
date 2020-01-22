@@ -33,7 +33,7 @@ __src
     |libs
         |youtube.jar
     |main
-         |kotlin->cloudwalker->demo->presenation
+         |kotlin->cloudwalker->demo->presentation
             |main->
                 activity
                     Contains main activity, this projects based on single activity, MainActivity
@@ -74,5 +74,52 @@ __src
                          user can search movies 
                splash   
                          Splash screen.
-             
-
+```
+Domain
+-----
+```
+__src
+    |main
+         |java->cloudwalker->demo->domain
+            exceptions
+                        Exceptions wrapper classes
+            executors
+                        Interfaces to implement in domain fetcher
+            fetchers
+                        Domain fetcher/Use Cases an interface that data layers implements
+            interactors
+                        Base interactor class
+            modules
+                configuration
+                        beans -> Query and Response class
+                        interactor -> Interactor's implementions that invokes domain fetcher's method that are implemented on data layer
+                moviesdetails
+                        beans
+                        interactor
+                nowplaying
+                        beans
+                        interactor
+                popularmovies
+                        beans
+                        interactor
+                searchmovie
+                        beans
+                        interactor.
+```
+```
+Data
+-----
+__src
+    |main
+         |kotlin->cloudwalker->demo->data
+         executors
+                    To do operation on separate threading simoultanously
+         fetchers
+                    Domain fetcher's implementation e.g use cases getMovies etc
+         webservices
+                    retrofit, httpclient api interfaces.
+         prod //Not implemented
+                    these are build flavours to execute different functionlity on different build flavours
+         sandbox//Not implemented
+         test//Not implemented
+         uat//Not implemented
