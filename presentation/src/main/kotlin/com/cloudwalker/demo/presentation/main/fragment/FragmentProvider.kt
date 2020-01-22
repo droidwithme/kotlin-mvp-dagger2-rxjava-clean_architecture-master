@@ -58,6 +58,20 @@ object FragmentProvider {
                     else -> fragment as MoviesFragment
                 }
             }
+
+            FragmentEnum.NOWPLAYINGMOVIESSCREEN -> {
+                when (fragment) {
+                    null -> fragment = PopularMoviesFragment()
+                    else -> fragment as MoviesFragment
+                }
+            }
+
+            FragmentEnum.SEARCHMOVIES -> { // TODO
+                when (fragment) {
+                    null -> fragment = PopularMoviesFragment()
+                    else -> fragment as MoviesFragment
+                }
+            }
         }
         utils.showLog(TAG, "getFragment($mainActivity, $fragmentEnum): $fragment")
         fragment.enterTransition = AutoTransition()

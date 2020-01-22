@@ -116,7 +116,7 @@ class LandingFragment : MainFragment(), ConfigurationView, View.OnClickListener 
     }
 
     override fun onClick(view: View?) {
-        mainActivity.replaceFragment(FragmentEnum.MOVIESHOME, null, null)
+        mainActivity.replaceFragment(FragmentEnum.MOVIESHOME, null, null, null)
     }
 
 }

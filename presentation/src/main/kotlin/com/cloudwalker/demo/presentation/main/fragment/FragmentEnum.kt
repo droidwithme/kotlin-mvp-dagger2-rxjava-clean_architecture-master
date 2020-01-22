@@ -18,4 +18,6 @@ enum class FragmentEnum(val code: String) {
     MOVIESHOME(MoviesFragment::class.java.simpleName),
     MOVIEDETAILS(MoviesDetailsFragment::class.java.simpleName),
     POPULARMOVIESSCREEN(PopularMoviesFragment::class.java.simpleName),
+    NOWPLAYINGMOVIESSCREEN(PopularMoviesFragment::class.java.simpleName),
+    SEARCHMOVIES(PopularMoviesFragment::class.java.simpleName),
 }

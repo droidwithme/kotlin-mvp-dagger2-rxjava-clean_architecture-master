@@ -1,15 +1,18 @@
 package com.cloudwalker.demo.presentation.ui.movieshome.fragments
 
 import android.os.Bundle
-import android.view.*
+import android.view.InflateException
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.cloudwalker.demo.presentation.R
 import com.cloudwalker.demo.presentation.main.fragment.MainFragment
 import com.cloudwalker.demo.presentation.ui.moviespopular.fragments.PopularMoviesFragment
+import com.cloudwalker.demo.presentation.ui.nowplaying.fragments.NowPlayingMoviesFragment
+import com.cloudwalker.demo.presentation.ui.searchmovie.fragments.SearchMoviesFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_movies.*
-import me.ibrahimsn.lib.OnItemReselectedListener
-import me.ibrahimsn.lib.OnItemSelectedListener
 
 
 private val TAG: String = MoviesFragment::class.java.simpleName
@@ -52,10 +55,10 @@ class MoviesFragment : MainFragment() {
                     openFragment(PopularMoviesFragment())
                 }
                 1 -> {
-                    openFragment(PopularMoviesFragment())
+                    openFragment(NowPlayingMoviesFragment())
                 }
                 2 -> {
-                    openFragment(PopularMoviesFragment())
+                    openFragment(SearchMoviesFragment())
                 }
             }
         }
@@ -79,8 +82,6 @@ class MoviesFragment : MainFragment() {
         super.onDestroyView()
         utils.showLog(TAG, "onDestroyView")
         movieView = null
-        mainActivity.window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        mainActivity.window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
     }
 
     private fun openFragment(fragment: Fragment) {

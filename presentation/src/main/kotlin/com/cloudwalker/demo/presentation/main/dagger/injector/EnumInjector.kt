@@ -13,6 +13,12 @@ import com.cloudwalker.demo.presentation.ui.moviedetails.dagger.module.MoviesDet
 import com.cloudwalker.demo.presentation.ui.moviespopular.dagger.component.DaggerPopularMoviesComponent
 import com.cloudwalker.demo.presentation.ui.moviespopular.dagger.component.PopularMoviesComponent
 import com.cloudwalker.demo.presentation.ui.moviespopular.dagger.module.PopularMoviesModule
+import com.cloudwalker.demo.presentation.ui.nowplaying.dagger.component.DaggerNowPlayingMoviesComponent
+import com.cloudwalker.demo.presentation.ui.nowplaying.dagger.component.NowPlayingMoviesComponent
+import com.cloudwalker.demo.presentation.ui.nowplaying.dagger.module.NowPlayingMoviesModule
+import com.cloudwalker.demo.presentation.ui.searchmovie.dagger.component.DaggerSearchMoviesComponent
+import com.cloudwalker.demo.presentation.ui.searchmovie.dagger.component.SearchMoviesComponent
+import com.cloudwalker.demo.presentation.ui.searchmovie.dagger.module.SearchMoviesModule
 
 enum class EnumInjector {
     INSTANCE;
@@ -32,6 +38,17 @@ enum class EnumInjector {
         return DaggerPopularMoviesComponent.builder()
             .applicationComponent(applicationComponent)
             .popularMoviesModule(popularMoviesModule)
+            .build()
+    }
+
+    // Initialize & Return Login Component
+    fun getNowPlayingMovieComponent(
+        applicationComponent: ApplicationComponent,
+        nowPlayingMoviesModule: NowPlayingMoviesModule
+    ): NowPlayingMoviesComponent {
+        return DaggerNowPlayingMoviesComponent.builder()
+            .applicationComponent(applicationComponent)
+            .nowPlayingMoviesModule(nowPlayingMoviesModule)
             .build()
     }
 
@@ -55,6 +72,17 @@ enum class EnumInjector {
         return DaggerMoviesDetailsComponent.builder()
             .applicationComponent(applicationComponent)
             .moviesDetailsModule(moviesDetailsModule)
+            .build()
+    }
+
+    // Initialize & Return Login Component
+    fun getSearchMovieComponent(
+        applicationComponent: ApplicationComponent,
+        searchMoviesModule: SearchMoviesModule
+    ): SearchMoviesComponent {
+        return DaggerSearchMoviesComponent.builder()
+            .applicationComponent(applicationComponent)
+            .searchMoviesModule(searchMoviesModule)
             .build()
     }
 

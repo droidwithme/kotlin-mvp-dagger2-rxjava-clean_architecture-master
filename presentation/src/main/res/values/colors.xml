@@ -5,6 +5,7 @@
     <color name="colorPrimaryLight" tools:keep="@color/colorPrimaryLight">#3F51B5</color>
     <color name="colorAccent" tools:keep="@color/colorAccent">#00BCD4</color>
     <color name="colorText" tools:keep="@color/colorText">#FFFFFF</color>
+    <color name="colorGray" tools:keep="@color/colorText">#B1B1B1</color>
     <color name="colorTextDark" tools:keep="@color/colorTextDark">#FFFFFF</color>
     <color name="colorPrimaryDarkAlpha" tools:keep="@color/colorPrimaryDarkAlpha">#501565c0</color>
 </resources>

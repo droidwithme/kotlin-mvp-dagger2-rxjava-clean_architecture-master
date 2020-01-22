@@ -10,9 +10,9 @@ class RestClient
 @Inject
 constructor(private val retrofitProvider: RetrofitProvider) {
 
-    val cloudWalkerAPI: CloudWalkerAPI get() = setupCollectionAPI()
+    val cloudWalkerAPI: CloudWalkerAPI get() = setupCloudWalkerAPI()
 
-    private fun setupCollectionAPI(): CloudWalkerAPI {
+    private fun setupCloudWalkerAPI(): CloudWalkerAPI {
         return retrofitProvider.retrofit.create(CloudWalkerAPI::class.java)
     }
 }

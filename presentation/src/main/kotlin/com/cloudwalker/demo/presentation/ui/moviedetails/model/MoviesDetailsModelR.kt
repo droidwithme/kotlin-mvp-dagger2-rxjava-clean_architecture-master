@@ -1,28 +1,25 @@
 package com.cloudwalker.demo.presentation.ui.moviedetails.model
 
+
 import com.google.gson.annotations.SerializedName
 
 data class MoviesDetailsModelR(
-    @SerializedName("page")
-    var page: Int,
-    @SerializedName("results")
-    var results: List<Result>,
-    @SerializedName("total_pages")
-    var totalPages: Int,
-    @SerializedName("total_results")
-    var totalResults: Int
-)
-
-
-data class Result(
     @SerializedName("adult")
     var adult: Boolean,
     @SerializedName("backdrop_path")
     var backdropPath: String,
-    @SerializedName("genre_ids")
-    var genreIds: List<Int>,
+    @SerializedName("belongs_to_collection")
+    var belongsToCollection: Any,
+    @SerializedName("budget")
+    var budget: Int,
+    @SerializedName("genres")
+    var genres: List<Genre>,
+    @SerializedName("homepage")
+    var homepage: String,
     @SerializedName("id")
     var id: Int,
+    @SerializedName("imdb_id")
+    var imdbId: String,
     @SerializedName("original_language")
     var originalLanguage: String,
     @SerializedName("original_title")
@@ -32,9 +29,23 @@ data class Result(
     @SerializedName("popularity")
     var popularity: Double,
     @SerializedName("poster_path")
-    var posterPath: String,
+    var posterPath: Any,
+    @SerializedName("production_companies")
+    var productionCompanies: List<ProductionCompany>,
+    @SerializedName("production_countries")
+    var productionCountries: List<ProductionCountry>,
     @SerializedName("release_date")
     var releaseDate: String,
+    @SerializedName("revenue")
+    var revenue: Int,
+    @SerializedName("runtime")
+    var runtime: Int,
+    @SerializedName("spoken_languages")
+    var spokenLanguages: List<SpokenLanguage>,
+    @SerializedName("status")
+    var status: String,
+    @SerializedName("tagline")
+    var tagline: String,
     @SerializedName("title")
     var title: String,
     @SerializedName("video")
@@ -42,5 +53,37 @@ data class Result(
     @SerializedName("vote_average")
     var voteAverage: Double,
     @SerializedName("vote_count")
-    var voteCount: Int
+    var voteCount: Int,
+    var trailer: String
+)
+data class ProductionCompany(
+    @SerializedName("id")
+    var id: Int,
+    @SerializedName("logo_path")
+    var logoPath: String,
+    @SerializedName("name")
+    var name: String,
+    @SerializedName("origin_country")
+    var originCountry: String
+)
+
+data class ProductionCountry(
+    @SerializedName("iso_3166_1")
+    var iso31661: String,
+    @SerializedName("name")
+    var name: String
+)
+
+data class SpokenLanguage(
+    @SerializedName("iso_639_1")
+    var iso6391: String,
+    @SerializedName("name")
+    var name: String
+)
+
+data class Genre(
+    @SerializedName("id")
+    var id: Int,
+    @SerializedName("name")
+    var name: String
 )

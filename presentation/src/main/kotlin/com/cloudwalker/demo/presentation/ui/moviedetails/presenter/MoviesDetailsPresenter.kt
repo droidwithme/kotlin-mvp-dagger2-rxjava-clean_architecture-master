@@ -48,10 +48,10 @@ constructor(
 
     private fun initialize() {
         showViewLoading()
-        getPopularMovies()
+        getMovieDetails()
     }
 
-    private fun getPopularMovies() {
+    private fun getMovieDetails() {
         movieDetailsInteractor.execute(this)
     }
 

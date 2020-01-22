@@ -3,6 +3,7 @@ package com.cloudwalker.demo.presentation.main.appflow
 import android.app.AlertDialog
 import android.os.Build
 import androidx.fragment.app.FragmentActivity
+import com.cloudwalker.demo.presentation.main.activity.MainActivity
 import com.cloudwalker.demo.presentation.main.fragment.FragmentEnum
 import com.cloudwalker.utils.Utils
 
@@ -57,8 +58,16 @@ object BackPressReactor {
                 utils.showLog(TAG, "Current Fragment SplashScreen")
             }
             FragmentEnum.MOVIESHOME.code -> {
-                utils.showLog(TAG, "Current Fragment MobileScreen")
+                utils.showLog(TAG, "Current Fragment Movie Home")
                 exitApplication(fragmentActivity, utils)
+            }
+            FragmentEnum.MOVIEDETAILS.code -> {
+                utils.showLog(TAG, "Current Fragment Movie details")
+                (fragmentActivity as MainActivity).replaceFragment(
+                    FragmentEnum.MOVIESHOME,
+                    null,
+                    null, null
+                )
             }
         }
     }

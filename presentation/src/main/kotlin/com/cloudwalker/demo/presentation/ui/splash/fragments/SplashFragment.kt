@@ -114,7 +114,7 @@ class SplashFragment : MainFragment(), SplashView {
                     mainActivity.replaceFragment(
                         FragmentEnum.LANDSCREEN,
                         logoImageView,
-                        context!!.getString(R.string.collection_logo_transition)
+                        context!!.getString(R.string.collection_logo_transition), null
                     )
                 }, 2000) // Hold for 2 Seconds
             }

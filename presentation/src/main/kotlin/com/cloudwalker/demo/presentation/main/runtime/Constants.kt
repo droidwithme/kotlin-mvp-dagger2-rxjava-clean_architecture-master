@@ -5,6 +5,8 @@ object Constants {
     const val popularMoviesInteractor = "PopularMoviesInteractor"
     const val configurationInteractor = "MovieDetailsInteractor"
     const val movieDetailsInteractor = "MoviesDetailsInteractor"
+    const val nowPlayingMoviesInteractor = "NowPlayingMoviesInteractor"
+    const val searchMovieInteractor = "SearchMovieInteractor"
 
 
 }

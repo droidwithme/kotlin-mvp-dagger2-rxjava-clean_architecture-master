@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.view_toolbar.*
 
 private val TAG: String = MainActivity::class.java.simpleName
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
 
     // To provide Application reference to BaseFragment
     private val mainApplication: MainApplication get() = (application as MainApplication)
@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        replaceFragment(FragmentEnum.SPLASHSCREEN, null, null)
+        //Entry fragment to the application
+        replaceFragment(FragmentEnum.SPLASHSCREEN, null, null, null)
+
     }
 
     /**
@@ -51,20 +53,30 @@ class MainActivity : AppCompatActivity(){
     }
 
     override fun onBackPressed() {
-            BackPressReactor.backPressed(this, R.id.contentFrame, utils)
+        BackPressReactor.backPressed(this, R.id.contentFrame, utils)
     }
 
 
     /**
      * To Change Fragment In Activity
      */
-    fun replaceFragment(fragmentEnum: FragmentEnum, sharedElement: View?, transitionName: String?) {
-        utils.showLog(TAG, "Replacing Fragment :${fragmentEnum.code}, $sharedElement, $transitionName")
+    fun replaceFragment(
+        fragmentEnum: FragmentEnum,
+        sharedElement: View?,
+        transitionName: String?,
+        bundle: Bundle?
+    ) {
+        utils.showLog(
+            TAG,
+            "Replacing Fragment :${fragmentEnum.code}, $sharedElement, $transitionName"
+        )
         val fragment = FragmentProvider.getFragment(this, fragmentEnum, utils)
+        fragment.arguments = bundle
         if (sharedElement != null) {
             utils.showLog(TAG, "Replacing Fragment With Shared Element")
             // Defines enter transition only for shared element
-            val changeBoundsTransition = TransitionInflater.from(this).inflateTransition(android.R.transition.move)
+            val changeBoundsTransition =
+                TransitionInflater.from(this).inflateTransition(android.R.transition.move)
             fragment.sharedElementEnterTransition = changeBoundsTransition
             supportFragmentManager.beginTransaction()
                 .replace(R.id.contentFrame, fragment, fragment::class.java.simpleName)
@@ -109,13 +121,16 @@ class MainActivity : AppCompatActivity(){
         if (errorConstraintLayout.visibility != View.VISIBLE)
             errorConstraintLayout.visibility = View.VISIBLE
         if (errorMessage == getString(R.string.exception_message_unknown_host_exception)) {
-            errorLottieAnimationView.setAnimation("network-error.json")
+            errorLottieAnimationView.setAnimation("something-went-wrong.json")
             errorLottieAnimationView.playAnimation()
         } else {
             errorLottieAnimationView.setAnimation("something-went-wrong.json")
             errorLottieAnimationView.playAnimation()
         }
-        errorMessageTextView.text = errorMessage
+        errorMessageTextView.text = "Reset"
+        errorMessageTextView.setOnClickListener {
+            hideError()
+        }
     }
 
     /**
