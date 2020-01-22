@@ -39,7 +39,7 @@ Features Included
 
 Features Not Implemented
 ----
-1. Unit Test cases
+1. Unit Test cases (Due to time constraint and office work. all dependencies are set up anyway.)
 
 
 Extra add on
