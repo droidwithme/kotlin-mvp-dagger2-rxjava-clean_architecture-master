@@ -1,6 +1,6 @@
 CloudWalker Download
 ===============
-You can download the source from this [Bitbucket link](/https://bitbucket.org/Devendra_/app-cloudwalker-demo/get/cc62a81a8802.zip)
+You can download the source from this [Bitbucket link](/https://github.com/droidwithme/kotlin-mvp-dagger2-rxjava-clean_architecture-master/archive/master.zip)
 
 Basic details
 ----------
@@ -15,6 +15,9 @@ Start Time: 20/01/2020
 ```
 Architecture: Clean Architecture [Best Explanation](https://www.raywenderlich.com/3595916-clean-architecture-tutorial-for-android-getting-started)
 
+StackOverflow Profile
+====
+[Check Profile](/https://stackoverflow.com/users/4745607/devendra-singh)
 Technologies Used
 ----
 1. Kotlin
@@ -28,6 +31,7 @@ Technologies Used
 9. Androidx
 10. Caching
 11. Pagination
+12. BottomBar
 
 
 Features Included
