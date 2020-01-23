@@ -1,7 +1,7 @@
 TMDB-Movie-Listing-Master
 ===============
 
-You can download the source from this [Bitbucket link](/https://github.com/droidwithme/kotlin-mvp-dagger2-rxjava-clean_architecture-master/archive/master.zip)
+You can download the source from this [Github link](/https://github.com/droidwithme/kotlin-mvp-dagger2-rxjava-clean_architecture-master/archive/master.zip)
 
 Basic details
 ----------
